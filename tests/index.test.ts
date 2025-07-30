@@ -7,14 +7,14 @@ import { describe, expect, it } from 'vitest'
 import presetTheme from '../src'
 
 describe('theme', () => {
-  const createUno = (
+  const createUno = async (
     userConfig?: UserConfig<Theme>,
     options: {
       unoOptions?: PresetUnoOptions
       themeOptions?: PresetThemeOptions<Theme>
     } = {},
   ) =>
-    createGenerator<Theme>(
+    await createGenerator<Theme>(
       mergeDeep(
         {
           theme: {
@@ -85,7 +85,7 @@ describe('theme', () => {
   it('basic', async () => {
     const targets = ['text-main-100', 'bg-main-200', 'border-main-500', 'border-main-6', 'text-sm', 'text-xs']
 
-    const uno = createUno()
+    const uno = await createUno()
     const { css } = await uno.generate(targets.join('\n'))
     expect(css).toMatchInlineSnapshot(`
       "/* layer: preflights */
@@ -104,7 +104,7 @@ describe('theme', () => {
     `)
   })
   it('media dark mode', async () => {
-    const uno = createGenerator({
+    const uno = await createGenerator({
       theme: {
         colors: {
           primary: '#123456',
@@ -149,7 +149,7 @@ describe('theme', () => {
     `)
   })
   it('selectors', async () => {
-    const uno = createGenerator({
+    const uno = await createGenerator({
       theme: {
         colors: {
           primary: '#123456',
@@ -187,7 +187,7 @@ describe('theme', () => {
   })
 
   it('selectors for default dark theme', async () => {
-    const uno = createGenerator({
+    const uno = await createGenerator({
       theme: {
         colors: {
           primary: '#123456',
@@ -225,7 +225,7 @@ describe('theme', () => {
   })
 
   it('color opacity', async () => {
-    const uno = createUno(
+    const uno = await createUno(
       {
         theme: {
           colors: {
@@ -274,7 +274,7 @@ describe('theme', () => {
   })
 
   it('different color opacity values in default and dark themes', async () => {
-    const uno = createUno(
+    const uno = await createUno(
       {
         theme: {
           colors: {
@@ -311,7 +311,7 @@ describe('theme', () => {
   })
 
   it('spacing', async () => {
-    const uno = createUno(
+    const uno = await createUno(
       {},
       {
         themeOptions: {
@@ -350,7 +350,7 @@ describe('theme', () => {
   })
 
   it('color-keyword-and-custom-vars', async () => {
-    const uno = createGenerator({
+    const uno = await createGenerator({
       theme: {
         colors: {
           primary: '#123456',
@@ -389,7 +389,7 @@ describe('theme', () => {
   })
 
   it('all theme use same selector content', async () => {
-    const uno = createGenerator({
+    const uno = await createGenerator({
       presets: [
         presetUno(),
         presetTheme<Theme>({
@@ -430,7 +430,7 @@ describe('theme', () => {
   })
 
   it('custom-selectors', async () => {
-    const uno = createGenerator({
+    const uno = await createGenerator({
       theme: {
         colors: {
           primary: '#123456',
@@ -478,7 +478,7 @@ describe('theme', () => {
   })
 
   it('breakpoints', async () => {
-    const uno = createGenerator({
+    const uno = await createGenerator({
       theme: {
         colors: {
           primary: '#123456',
