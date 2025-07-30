@@ -1,8 +1,8 @@
 import type { Theme } from 'unocss/preset-uno'
 import vue from '@vitejs/plugin-vue'
 import { presetIcons, presetUno } from 'unocss'
-import unocss from 'unocss/vite'
 import presetTheme from 'unocss-preset-theme'
+import unocss from 'unocss/vite'
 import { defineConfig } from 'vite'
 
 // https://vitejs.dev/config/

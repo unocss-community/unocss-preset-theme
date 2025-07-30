@@ -19,8 +19,8 @@ Just like this
 ```typescript
 import type { Theme } from 'unocss/preset-uno'
 import { presetUno } from 'unocss'
-import Unocss from 'unocss/vite'
 import presetTheme from 'unocss-preset-theme'
+import Unocss from 'unocss/vite'
 
 Unocss<Theme>({
   // Configure light themes

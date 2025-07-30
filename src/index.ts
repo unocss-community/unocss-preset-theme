@@ -69,7 +69,7 @@ export function presetTheme<T extends Record<string, any>>(options: PresetThemeO
                 (obj, themeKey) => {
                   let themeValue
                     = getThemeVal(theme[themeKey], themeKeys, index)
-                    || (themeKey === originalThemeKey ? getThemeVal(originalTheme, themeKeys) : null)
+                      || (themeKey === originalThemeKey ? getThemeVal(originalTheme, themeKeys) : null)
                   let themeAlphaValue: string | undefined
                   if (themeValue) {
                     const cssVarName = `${prefix}-${preKeys.join('-')}-${configKey}`
